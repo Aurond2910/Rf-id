@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Pilih Lokasi - LPG Distribution</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00366e",
+                        "primary-container": "#004c97",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-low": "#eff4ff",
+                        "secondary": "#006d35",
+                        "secondary-container": "#8afaa6",
+                        "on-secondary-container": "#007439",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#424751",
+                        "outline-variant": "#c2c6d3"
+                    },
+                    fontFamily: {
+                        "body-md": ["Work Sans"],
+                        "headline-md": ["Work Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>body { font-family: 'Work Sans', sans-serif; }</style>
+</head>
+<body class="bg-surface text-on-surface antialiased pb-28 pt-16 min-h-screen">
+
+    <!-- TopAppBar -->
+    <header class="flex justify-between items-center px-4 h-14 w-full fixed top-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant max-w-2xl left-1/2 -translate-x-1/2">
+        <div class="flex items-center gap-2">
+            <a href="index.html" class="text-primary hover:bg-surface-container p-2 rounded-full transition-colors flex items-center">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="font-headline-md font-bold text-primary text-lg">Pilih Lokasi Wilayah</h1>
+        </div>
+        <button class="text-primary hover:bg-surface-container p-2 rounded-full transition-colors flex items-center">
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+    </header>
+
+    <main class="w-full max-w-lg mx-auto px-4 flex flex-col gap-4 mt-2">
+
+        <!-- Form Dropdown Selection -->
+        <section class="bg-surface-container-low rounded-2xl p-4 sm:p-5 border border-outline-variant flex flex-col gap-4 shadow-sm">
+            
+            <div class="flex flex-col gap-1">
+                <label class="text-xs font-semibold text-on-surface-variant">Kota / Kabupaten</label>
+                <select id="selectKota" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-3 text-sm font-medium text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+                    <option value="Manado">Kota Manado</option>
+                    <option value="Minahasa Utara">Minahasa Utara</option>
+                    <option value="Bitung">Kota Bitung</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-xs font-semibold text-on-surface-variant">Kecamatan</label>
+                <select id="selectKecamatan" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-3 text-sm font-medium text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+                    <option value="Singkil">Singkil</option>
+                    <option value="Tuminting">Tuminting</option>
+                    <option value="Malalayang">Malalayang</option>
+                    <option value="Tikala">Tikala</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-xs font-semibold text-on-surface-variant">Kelurahan / Lingkungan</label>
+                <select id="selectLingkungan" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-3 text-sm font-medium text-on-surface focus:ring-2 focus:ring-primary focus:outline-none">
+                    <option value="Singkil 1 Lingkungan 6">Singkil 1 Lingkungan 6</option>
+                    <option value="Singkil 1 Lingkungan 5">Singkil 1 Lingkungan 5</option>
+                    <option value="Singkil 2 Lingkungan 1">Singkil 2 Lingkungan 1</option>
+                </select>
+            </div>
+
+            <button onclick="saveLocationAndContinue()" class="w-full bg-primary-container text-on-primary font-medium py-3 rounded-xl transition-all flex items-center justify-center gap-2 h-12 shadow-sm hover:bg-primary active:scale-95 mt-2">
+                <span class="material-symbols-outlined">check_circle</span>
+                Simpan & Lanjutkan
+            </button>
+        </section>
+
+    </main>
+
+    <!-- BottomNavBar -->
+    <nav class="bg-surface-container shadow-lg rounded-t-2xl fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50 flex justify-around items-center px-2 py-2 h-20 border-t border-outline-variant/30">
+        <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-all">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+        <a href="slide2.html" class="flex flex-col items-center justify-center bg-primary/10 text-primary rounded-2xl px-4 py-1.5 shadow-sm">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            <span class="text-xs font-bold mt-0.5">Location</span>
+        </a>
+        <a href="slide1.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-all">
+            <span class="material-symbols-outlined">qr_code_scanner</span>
+            <span class="text-xs mt-1">Scan</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-all">
+            <span class="material-symbols-outlined">history</span>
+            <span class="text-xs mt-1">History</span>
+        </a>
+    </nav>
+
+    <script>
+        function saveLocationAndContinue() {
+            const kota = document.getElementById('selectKota').value;
+            const kecamatan = document.getElementById('selectKecamatan').value;
+            const lingkungan = document.getElementById('selectLingkungan').value;
+
+            const fullLocation = `${kota} - ${lingkungan}`;
+            localStorage.setItem('selected_location', fullLocation);
+
+            window.location.href = 'slide1.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Beranda - LPG Distribution System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00366e",
+                        "primary-container": "#004c97",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary": "#006d35",
+                        "secondary-container": "#8afaa6",
+                        "on-secondary-container": "#007439",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#424751",
+                        "outline-variant": "#c2c6d3"
+                    },
+                    fontFamily: {
+                        "body-md": ["Work Sans"],
+                        "headline-md": ["Work Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>body { font-family: 'Work Sans', sans-serif; }</style>
+</head>
+<body class="bg-surface text-on-surface antialiased pb-28 pt-16 min-h-screen">
+
+    <!-- Header App Bar -->
+    <header class="flex justify-between items-center px-4 h-14 w-full fixed top-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant max-w-2xl left-1/2 -translate-x-1/2">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">local_gas_station</span>
+            <h1 class="font-headline-md font-bold text-primary text-lg">Distribusi LPG Subsidi</h1>
+        </div>
+        <button class="text-primary hover:bg-surface-container p-2 rounded-full transition-colors">
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+    </header>
+
+    <main class="w-full max-w-lg mx-auto px-4 flex flex-col gap-5 mt-2">
+
+        <!-- Welcome Banner -->
+        <section class="bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-2xl p-5 shadow-md">
+            <h2 class="text-xl font-bold mb-1">Selamat Datang 👋</h2>
+            <p class="text-xs sm:text-sm text-surface-container-highest opacity-90">Sistem Pencatatan Pembelian LPG 3kg Terintegrasi KTP & RFID.</p>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="flex flex-col gap-3">
+            <h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Layanan Utama</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-2 gap-3">
+                <a href="slide2.html" class="bg-surface-container-low border border-outline-variant rounded-2xl p-4 flex flex-col items-center text-center gap-2 hover:border-primary transition-all shadow-sm group">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-2xl">location_on</span>
+                    </div>
+                    <span class="font-bold text-sm text-primary">Pilih Lokasi Pangkalan</span>
+                    <span class="text-[11px] text-on-surface-variant">Tentukan wilayah pendaftaran</span>
+                </a>
+
+                <a href="slide1.html" class="bg-surface-container-low border border-outline-variant rounded-2xl p-4 flex flex-col items-center text-center gap-2 hover:border-secondary transition-all shadow-sm group">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container group-hover:scale-105 transition-all">
+                        <span class="material-symbols-outlined text-2xl">qr_code_scanner</span>
+                    </div>
+                    <span class="font-bold text-sm text-secondary">Scan e-KTP / RFID</span>
+                    <span class="text-[11px] text-on-surface-variant">Verifikasi identitas pembeli</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Status Card / Info -->
+        <section class="bg-surface-container rounded-2xl p-4 border border-outline-variant flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                <div>
+                    <h4 class="font-bold text-sm text-primary">Kuota Distribusi Aktif</h4>
+                    <p class="text-xs text-on-surface-variant">Manado & Sekitarnya (Singkil)</p>
+                </div>
+            </div>
+            <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full">Tersedia</span>
+        </section>
+
+    </main>
+
+    <!-- BottomNavBar -->
+    <nav class="bg-surface-container shadow-lg rounded-t-2xl fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50 flex justify-around items-center px-2 py-2 h-20 border-t border-outline-variant/30">
+        <a href="index.html" class="flex flex-col items-center justify-center bg-primary/10 text-primary rounded-2xl px-4 py-1.5 shadow-sm">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="text-xs font-bold mt-0.5">Home</span>
+        </a>
+        <a href="slide2.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-all">
+            <span class="material-symbols-outlined">location_on</span>
+            <span class="text-xs mt-1">Location</span>
+        </a>
+        <a href="slide1.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-all">
+            <span class="material-symbols-outlined">qr_code_scanner</span>
+            <span class="text-xs mt-1">Scan</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-all">
+            <span class="material-symbols-outlined">history</span>
+            <span class="text-xs mt-1">History</span>
+        </a>
+    </nav>
+
+</body>
+</html>

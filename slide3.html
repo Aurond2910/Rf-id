@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Konfirmasi Pembelian LPG</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00366e",
+                        "primary-container": "#004c97",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#424751",
+                        "outline-variant": "#c2c6d3",
+                        "secondary": "#006d35",
+                        "secondary-container": "#8afaa6",
+                        "on-secondary-container": "#007439"
+                    },
+                    fontFamily: {
+                        sans: ['Work Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased pb-28 pt-16 md:pt-20 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-surface/90 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-4 sm:px-8 h-14 md:h-16 w-full fixed top-0 z-50">
+        <div class="flex items-center gap-3 max-w-4xl mx-auto w-full justify-between">
+            <div class="flex items-center gap-2">
+                <a href="slide1.html" class="text-primary hover:bg-surface-container p-2 rounded-full transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                </a>
+                <h1 class="text-base sm:text-lg md:text-xl font-bold text-primary">Konfirmasi Transaksi</h1>
+            </div>
+            <button type="button" class="text-primary hover:bg-surface-container p-2 rounded-full transition-colors flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">account_circle</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-6 flex flex-col gap-5 md:gap-6 my-auto">
+        <!-- Title Section -->
+        <div class="text-left">
+            <h2 class="text-xl sm:text-2xl font-bold text-on-surface">Konfirmasi Pembelian</h2>
+            <p class="text-xs sm:text-sm text-on-surface-variant mt-1">Verifikasi data penerima dan tentukan jumlah tabung gas.</p>
+        </div>
+
+        <!-- Layout Grid untuk Layar Medium/Besar -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
+            
+            <!-- Card Data KTP -->
+            <div class="bg-surface-container-low border border-outline-variant rounded-2xl p-4 sm:p-5 flex flex-col gap-3 shadow-sm h-full">
+                <div class="flex items-center justify-between pb-2 border-b border-outline-variant">
+                    <span class="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">badge</span> Data KTP Terverifikasi
+                    </span>
+                    <span class="bg-secondary-container text-on-secondary-container text-[11px] px-2.5 py-0.5 rounded-full font-bold">Verified</span>
+                </div>
+
+                <div class="space-y-2.5 text-xs sm:text-sm">
+                    <div class="flex justify-between items-center">
+                        <span class="text-on-surface-variant">NIK:</span>
+                        <span id="confirmNik" class="font-semibold text-on-surface tracking-wide">-</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-on-surface-variant">Nama:</span>
+                        <span id="confirmNama" class="font-semibold text-on-surface truncate max-w-[180px] sm:max-w-none">-</span>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-on-surface-variant shrink-0">Lokasi:</span>
+                        <span id="confirmLokasi" class="font-semibold text-primary text-right pl-2 truncate max-w-[200px] sm:max-w-[260px]">-</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-on-surface-variant">Kategori:</span>
+                        <span class="font-semibold text-on-surface">Rumah Tangga</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-on-surface-variant">Kuota Sisa:</span>
+                        <span class="font-semibold text-secondary bg-secondary-container/30 px-2 py-0.5 rounded">4 Tabung</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Pilih Jumlah Tabung & Harga -->
+            <div class="bg-surface-container-low border border-outline-variant rounded-2xl p-4 sm:p-5 flex flex-col gap-4 shadow-sm h-full justify-between">
+                <label class="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm">propane_tank</span> Jumlah Tabung (Max 3)
+                </label>
+
+                <!-- Counter Control -->
+                <div class="flex items-center justify-center gap-6 py-2">
+                    <button type="button" id="btnMinus" onclick="updateQty(-1)" class="w-12 h-12 sm:w-14 sm:h-14 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center text-primary hover:bg-surface-container-highest transition-all text-2xl font-bold active:scale-95">-</button>
+                    <span id="qtyText" class="text-3xl sm:text-4xl font-bold text-primary w-12 text-center select-none">1</span>
+                    <button type="button" id="btnPlus" onclick="updateQty(1)" class="w-12 h-12 sm:w-14 sm:h-14 bg-primary-container text-on-primary rounded-full flex items-center justify-center hover:bg-surface-tint transition-all text-2xl font-bold active:scale-95">+</button>
+                </div>
+
+                <!-- Detail Price Breakdown -->
+                <div class="border-t border-outline-variant pt-3 space-y-2">
+                    <div class="flex justify-between text-xs sm:text-sm">
+                        <span class="text-on-surface-variant">Harga Satuan:</span>
+                        <span class="font-medium">Rp 18.000</span>
+                    </div>
+                    <div class="flex justify-between text-sm sm:text-base font-bold text-primary">
+                        <span>Total Pembayaran:</span>
+                        <span id="totalHarga">Rp 18.000</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Button -->
+        <div class="flex flex-col gap-2 mt-2">
+            <button type="button" onclick="saveTransaction()" class="w-full bg-primary-container text-on-primary font-bold py-3.5 sm:py-4 rounded-xl hover:bg-surface-tint transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2 text-sm sm:text-base">
+                <span class="material-symbols-outlined text-xl">save</span>
+                Simpan Transaksi
+            </button>
+            <p class="text-center text-[11px] sm:text-xs text-on-surface-variant">Data akan langsung disimpan ke database server.</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Responsive Bar -->
+    <nav class="bg-surface-container/95 backdrop-blur-md shadow-lg rounded-t-2xl fixed bottom-0 left-0 w-full z-50 border-t border-outline-variant">
+        <div class="max-w-md sm:max-w-xl md:max-w-2xl mx-auto flex justify-around items-center px-4 h-16 sm:h-20">
+            <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-xl">
+                <span class="material-symbols-outlined text-2xl">home</span>
+                <span class="text-[10px] sm:text-xs mt-1 font-medium">Home</span>
+            </a>
+            <a href="slide2.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-xl">
+                <span class="material-symbols-outlined text-2xl">location_on</span>
+                <span class="text-[10px] sm:text-xs mt-1 font-medium">Location</span>
+            </a>
+            <a href="slide1.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-xl">
+                <span class="material-symbols-outlined text-2xl">qr_code_scanner</span>
+                <span class="text-[10px] sm:text-xs mt-1 font-medium">Scan</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-xl">
+                <span class="material-symbols-outlined text-2xl">history</span>
+                <span class="text-[10px] sm:text-xs mt-1 font-medium">History</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        let qty = 1;
+        const hargaSatuan = 18000;
+        const maxQty = 3;
+        const minQty = 1;
+
+        let currentKtp = {};
+        let currentLokasi = "";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedKtp = localStorage.getItem('scanned_ktp');
+            currentLokasi = localStorage.getItem('selected_location') || 'Manado - Singkil 1 Lingkungan 6';
+
+            if (savedKtp) {
+                try {
+                    currentKtp = JSON.parse(savedKtp);
+                } catch (e) {
+                    currentKtp = { nik: "3201234567890001", nama: "Budi Santoso" };
+                }
+            } else {
+                currentKtp = { nik: "3201234567890001", nama: "Budi Santoso" };
+            }
+
+            document.getElementById('confirmNik').textContent = currentKtp.nik || '-';
+            document.getElementById('confirmNama').textContent = currentKtp.nama || '-';
+            document.getElementById('confirmLokasi').textContent = currentLokasi;
+
+            updatePrices();
+        });
+
+        function updateQty(change) {
+            qty = Math.min(Math.max(qty + change, minQty), maxQty);
+            document.getElementById('qtyText').textContent = qty;
+            updatePrices();
+        }
+
+        function updatePrices() {
+            const total = qty * hargaSatuan;
+            document.getElementById('totalHarga').textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        function saveTransaction() {
+            const newTx = {
+                id: 'TX-' + Date.now(),
+                nik: currentKtp.nik,
+                nama: currentKtp.nama,
+                lokasi: currentLokasi,
+                jumlahTabung: qty,
+                totalHarga: qty * hargaSatuan,
+                tanggal: new Date().toISOString()
+            };
+
+            const existingTx = JSON.parse(localStorage.getItem('lpg_transactions') || '[]');
+            existingTx.push(newTx);
+            localStorage.setItem('lpg_transactions', JSON.stringify(existingTx));
+
+            alert('Transaksi Berhasil Disimpan!');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
